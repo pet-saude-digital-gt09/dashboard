@@ -96,7 +96,7 @@ def tela_cadastro_usuario():
     st.header("👤 Novo Cadastro")
     st.caption("Crie sua conta para acessar o sistema.")
     
-    data_padrao = date.today().replace(year=date.today().year - 30)
+    data_padrao = date.today().replace(year=date.today().year - 100)
 
     with st.form("form_cadastro_usuario"):
         st.subheader("Dados de Acesso")
