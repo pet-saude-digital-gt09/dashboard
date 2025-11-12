@@ -54,7 +54,7 @@ def tela_faq():
     # ----------------------------------------
     # SEÇÃO 2: SOBRE O CARTÃO DE VACINA
     # ----------------------------------------
-    st.subheader("2. Vacinação e LGPD")
+    st.subheader("2. Vacinação")
 
     with st.expander("De onde vêm as vacinas sugeridas no Cartão de Vacina?"):
         st.markdown(
@@ -79,6 +79,8 @@ def tela_faq():
             O sistema lista a dose específica (ex: 1ª, 2ª, reforço) para que o registro de vacinação seja o mais detalhado possível, auxiliando na conferência do calendário. Se a vacina for marcada como tomada, aquela dose específica será marcada como concluída.
             """
         )
+
+    st.subheader("3. LGPD")
 
     with st.expander("Por que não vejo nomes ou CPFs no Dashboard?"):
         st.markdown(
