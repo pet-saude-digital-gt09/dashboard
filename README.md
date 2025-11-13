@@ -1,6 +1,6 @@
-PET-Saúde - Sistema de Apoio ao Paciente
+Saúde em Dia - Sistema de Apoio ao Paciente
 
-Este é um sistema web de apoio ao paciente, desenvolvido com Flask, focado em fornecer ferramentas diretas para o gerenciamento da saúde, como orientações personalizadas, cronogramas médicos e lembretes de medicação.
+Este é um sistema web de apoio ao paciente, desenvolvido com Flask, focado em fornecer ferramentas diretas para o gerenciamento da saúde, como orientações personalizadas, cronogramas médicos da unidade de saúde e lembretes de medicação.
 
 ✨ Funcionalidades
 

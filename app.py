@@ -1,5 +1,3 @@
-# app.py (Versão atualizada)
-
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from functools import wraps
 import sqlite3
@@ -8,10 +6,6 @@ from werkzeug.security import check_password_hash, generate_password_hash # Impo
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'uma-chave-secreta-muito-forte'
-
-# --- REMOVA OS DICIONÁRIOS MOCK ---
-# O 'USUARIOS' e 'CRONOGRAMA_MEDICOS' não são mais necessários
-# O 'DICAS_SAUDE' pode permanecer, pois é estático.
 
 DICAS_SAUDE = {
     'Hipertenso': [
