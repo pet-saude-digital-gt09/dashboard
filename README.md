@@ -1,106 +1,141 @@
-Saúde em Dia - Sistema de Apoio ao Paciente
+# 🏥 PET-Saúde - Sistema de Apoio ao Paciente
 
-Este é um sistema web de apoio ao paciente, desenvolvido com Flask, focado em fornecer ferramentas diretas para o gerenciamento da saúde, como orientações personalizadas, cronogramas médicos da unidade de saúde e lembretes de medicação.
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python">
+  <img alt="Flask" src="https://img.shields.io/badge/Flask-2.x-black?style=for-the-badge&logo=flask">
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
+</p>
 
-✨ Funcionalidades
+> Aplicação web moderna para apoio ao paciente, focada em fornecer ferramentas essenciais de saúde, como orientações personalizadas, agendamentos e lembretes de medicação.
 
-    Autenticação: Sistema de login e cadastro de pacientes (com validação de CPF).
+---
 
-    Orientações de Saúde: Exibe dicas de saúde personalizadas com base no grupo de risco do paciente (ex: Hipertenso, Diabético).
+## Tabela de Conteúdos
 
-    Cronograma Médico: Apresenta a disponibilidade e os horários dos médicos na unidade de saúde.
+* [✨ Funcionalidades](#-funcionalidades)
+* [📸 Screenshots](#-screenshots)
+* [💻 Tech Stack](#-tech-stack)
+* [🚀 Começando](#-começando)
+* [🗃️ Visualizando o Banco de Dados](#-visualizando-o-banco-de-dados)
+* [📄 Licença](#-licença)
 
-    Lembretes de Medicação: Permite ao paciente cadastrar e gerenciar seus próprios lembretes de remédios, que são salvos de forma segura no banco de dados e vinculados à sua conta.
+---
 
-🚀 Como Configurar e Executar
+## ✨ Funcionalidades
+
+* **🔐 Autenticação Segura:** Sistema de Login e Cadastro de pacientes com validação de CPF e senhas criptografadas.
+* **💡 Orientação Personalizada:** Exibição de dicas de saúde com base no grupo de risco cadastrado pelo paciente (ex: Hipertenso, Diabético).
+* **🗓️ Cronograma Médico:** Visualização clara da disponibilidade e horários dos profissionais de saúde na unidade.
+* **⏰ Lembretes de Medicação:** Ferramenta para que o paciente cadastre e gerencie seus próprios lembretes de remédios (salvos por usuário no banco de dados).
+
+---
+
+## 📸 Screenshots
+
+<table align="center">
+  <tr>
+    <td align="center"><strong>Tela de Login</strong></td>
+    <td align="center"><strong>Tela de Orientação (Home)</strong></td>
+  </tr>
+  <tr>
+    <td><img src="URL_DO_SCREENSHOT_LOGIN" width="400" alt="Screenshot da Tela de Login"></td>
+    <td><img src="URL_DO_SCREENSHOT_HOME" width="400" alt="Screenshot da Tela de Orientação"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Cronograma Médico</strong></td>
+    <td align="center"><strong>Lembretes de Medicação</strong></td>
+  </tr>
+  <tr>
+    <td><img src="URL_DO_SCREENSHOT_CRONOGRAMA" width="400" alt="Screenshot do Cronograma Médico"></td>
+    <td><img src="URL_DO_SCREENSHOT_LEMBRETES" width="400" alt="Screenshot dos Lembretes de Medicação"></td>
+  </tr>
+</table>
+
+---
+
+## 💻 Tech Stack
+
+A tabela abaixo lista as principais tecnologias usadas no projeto:
+
+| Categoria | Tecnologia |
+| :--- | :--- |
+| **Backend** | Python, Flask |
+| **Frontend** | HTML, CSS, JavaScript |
+| **Banco de Dados** | SQLite3 (nativo do Python) |
+| **Ambiente** | `venv` (Gerenciamento de pacotes) |
+| **Segurança** | Werkzeug (Hashing de senhas) |
+
+---
+
+## 🚀 Começando
 
 Siga estas instruções para configurar e executar o projeto em seu ambiente local.
 
-1. Pré-requisitos
+### Pré-requisitos
 
-    Python 3.10+
+* Python 3.10 ou superior
+* `git` (para clonar o projeto)
 
-    git (para clonar o repositório)
+### Instalação
 
-2. Configuração do Ambiente Virtual (Venv)
-
-Primeiro, clone o repositório e acesse a pasta:
-Bash
-
-git clone https://github.com/rhonnyesoaress/petsaude
+**1. Clone o repositório:**
+```bash
+git clone [URL-DO-SEU-REPOSITÓRIO-AQUI]
 cd petsaude
 
-Recomendamos o uso de um ambiente virtual (venv) para isolar as dependências do projeto.
+2. Crie e ative o ambiente virtual (venv):
 
-No Windows:
-Bash
+    Isso isola as dependências do projeto e evita conflitos.
 
-# Criar o ambiente
-python -m venv venv
+    No Windows:
 
-# Ativar o ambiente
-.\venv\Scripts\activate
+    - python -m venv venv
+    - .\venv\Scripts\activate
 
-No macOS ou Linux:
-Bash
+    No macOS ou Linux:
 
-# Criar o ambiente
-python3 -m venv venv
+    - python3 -m venv venv
+    - source venv/bin/activate
 
-# Ativar o ambiente
-source venv/bin/activate
+3. Instale as bibliotecas necessárias:
 
-3. Instalação das Bibliotecas
+    O projeto é leve e requer apenas duas bibliotecas principais.
 
-Com o venv ativado, instale as bibliotecas necessárias que estão listadas no requirements.txt. Este projeto utiliza apenas duas dependências principais:
-Bash
+    - pip install Flask Werkzeug
 
-pip install Flask Werkzeug
+    (O sqlite3, usado para o banco de dados, já vem com o Python).
 
-    Flask: O micro-framework web usado para construir a aplicação.
+4. Inicialize o Banco de Dados:
 
-    Werkzeug: Usado pelo Flask para criptografar e verificar as senhas dos usuários.
+    Este passo deve ser executado apenas uma vez (ou sempre que o init_db.py for modificado).
 
-(O sqlite3, usado para o banco de dados, já faz parte da biblioteca padrão do Python).
+    - python init_db.py
 
-▶️ Como Executar a Aplicação
+    Isso criará o arquivo saude.db com todas as tabelas (usuarios, medicos, lembretes).
 
-Com o ambiente configurado, siga estes dois passos:
+5. Execute a Aplicação:
 
-1. Inicializar o Banco de Dados
 
-Antes de executar a aplicação pela primeira vez, você precisa criar o banco de dados e as tabelas. Execute o script init_db.py uma única vez:
-Bash
+    - flask run
 
-python init_db.py
+    🚀 Pronto! A aplicação estará rodando no seu navegador em: https://www.google.com/search?q=http://127.0.0.1:5000
 
-Isso criará o arquivo saude.db na pasta do projeto, contendo as tabelas usuarios, medicos e lembretes.
+🗃️ Visualizando o Banco de Dados
 
-2. Iniciar o Servidor Flask
+Todos os dados são salvos no arquivo saude.db. A melhor forma de visualizá-los é usando uma extensão no VS Code.
 
-Agora, inicie o servidor de desenvolvimento:
-Bash
+Como visualizar: Extensão do VS Code (Recomendado)
 
-flask run
-
-O servidor estará ativo e a aplicação pode ser acessada no seu navegador no endereço: http://127.0.0.1:5000
-
-🗃️ Como Visualizar o Banco de Dados
-
-Os dados (usuários, médicos, lembretes) são salvos no arquivo saude.db, que é um banco de dados SQLite. Você não pode abri-lo com um editor de texto.
-
-A melhor forma de visualizar ou editar os dados é usando uma ferramenta de banco de dados.
-
-Como abrir: Extensão do VS Code (Recomendado)
-
-    No VS Code, vá até a aba "Extensões".
+    No VS Code, vá até a aba "Extensões" (Ctrl+Shift+X).
 
     Procure e instale a extensão "SQLite" (criada por alexcvzz).
 
-    Importante (se você usa Linux): Esta extensão pode exigir que o sqlite3 esteja instalado no seu sistema. Se necessário, rode: sudo apt install sqlite3.
+    Se você usa Linux: Pode ser necessário instalar o sqlite3 no seu sistema com sudo apt install sqlite3.
 
-    Após a instalação, clique com o botão direito no arquivo saude.db no explorador de arquivos.
+    Reinicie o VS Code.
+
+    Clique com o botão direito no arquivo saude.db no explorador de arquivos.
 
     Selecione "Open Database".
 
-    Um novo painel "SQLITE EXPLORER" aparecerá na sua barra lateral, permitindo que você navegue pelas tabelas e veja todos os dados.
+    Um novo painel "SQLITE EXPLORER" aparecerá na sua barra lateral, permitindo que você navegue e consulte as tabelas.
