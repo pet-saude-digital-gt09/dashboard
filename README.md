@@ -1,4 +1,4 @@
-# 🏥 PET-Saúde - Sistema de Apoio ao Paciente
+# 🏥 Saúde em Dia - Sistema de Apoio ao Paciente
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python">
@@ -80,7 +80,7 @@ Siga estas instruções para configurar e executar o projeto em seu ambiente loc
 
 **1. Clone o repositório:**
 ```bash
-git clone [URL-DO-SEU-REPOSITÓRIO-AQUI]
+git clone https://github.com/rhonnyesoaress/petsaude
 cd petsaude
 
 2. Crie e ative o ambiente virtual (venv):
@@ -116,9 +116,7 @@ cd petsaude
 5. Execute a Aplicação:
 
 
-    - flask run
-
-    🚀 Pronto! A aplicação estará rodando no seu navegador em: https://www.google.com/search?q=http://127.0.0.1:5000
+    - flask run OU python app.py
 
 🗃️ Visualizando o Banco de Dados
 
