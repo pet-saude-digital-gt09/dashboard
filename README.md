@@ -1,74 +1,106 @@
-# PET-Saúde - Dashboard Pessoal de Saúde
+PET-Saúde - Sistema de Apoio ao Paciente
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.30%2B-red?style=for-the-badge&logo=streamlit)
-![Pandas](https://img.shields.io/badge/Pandas-2.0%2B-purple?style=for-the-badge&logo=pandas)
+Este é um sistema web de apoio ao paciente, desenvolvido com Flask, focado em fornecer ferramentas diretas para o gerenciamento da saúde, como orientações personalizadas, cronogramas médicos e lembretes de medicação.
 
-Um dashboard de saúde pessoal construído com Streamlit, projetado para que usuários individuais possam gerenciar e acompanhar seu histórico de consultas e seu status de vacinação. O sistema utiliza a lógica do calendário do Ministério da Saúde para sugerir vacinas com base na faixa etária do usuário.
+✨ Funcionalidades
 
-## 🌟 Principais Funcionalidades
+    Autenticação: Sistema de login e cadastro de pacientes (com validação de CPF).
 
-* **Sistema de Autenticação:** Cadastro e login de usuários (pacientes) baseado em CPF, com validação de dados e armazenamento em sessão.
-* **Dashboard Pessoal:** Visualização rápida com métricas-chave (total de consultas, vacinas aplicadas vs. pendentes) e gráficos de distribuição.
-* **Gestão de Consultas:** Registro de futuras consultas médicas, separadas por especialidade.
-* **Histórico Detalhado:** Visualização em abas de todo o histórico de consultas passadas e do cartão de vacina completo.
-* **Cartão de Vacina Inteligente:** O sistema filtra e exibe automaticamente as vacinas relevantes (pendentes ou aplicadas) com base na faixa etária do usuário, calculada a partir da data de nascimento.
-* **Página de FAQ:** Seção de ajuda explicando a lógica do sistema (cálculo de idade, grupos de vacinas, etc.).
+    Orientações de Saúde: Exibe dicas de saúde personalizadas com base no grupo de risco do paciente (ex: Hipertenso, Diabético).
 
-## 🛠️ Tech Stack (Tecnologias Utilizadas)
+    Cronograma Médico: Apresenta a disponibilidade e os horários dos médicos na unidade de saúde.
 
-* **Framework Principal:** Streamlit
-* **Análise e Manipulação de Dados:** Pandas
-* **Linguagem:** Python 3
+    Lembretes de Medicação: Permite ao paciente cadastrar e gerenciar seus próprios lembretes de remédios, que são salvos de forma segura no banco de dados e vinculados à sua conta.
 
-## 📂 Estrutura do Projeto
+🚀 Como Configurar e Executar
 
-O projeto utiliza a arquitetura nativa de Multi-Page App (MPA) do Streamlit, onde `login.py` atua como o script principal de autenticação e roteamento.
+Siga estas instruções para configurar e executar o projeto em seu ambiente local.
 
-## 🚀 Como Executar o Projeto
+1. Pré-requisitos
 
-Siga os passos abaixo para executar o projeto localmente.
+    Python 3.10+
 
-### 1. Pré-requisitos
+    git (para clonar o repositório)
 
-* [Python 3.9+](https://www.python.org/downloads/)
-* [Git](https://git-scm.com/downloads) (Opcional, para clonar)
+2. Configuração do Ambiente Virtual (Venv)
 
-### 2. Instalação
+Primeiro, clone o repositório e acesse a pasta:
+Bash
 
-1.  Clone o repositório:
-    ```bash
-    git clone https://github.com/seu-usuario/dashboard_pet.git
-    cd dashboard_pet
-    ```
+git clone https://github.com/rhonnyesoaress/petsaude
+cd petsaude
 
-2.  (Recomendado) Crie e ative um ambiente virtual:
-    ```bash
-    # Windows
-    python -m venv venv
-    .\venv\Scripts\activate
+Recomendamos o uso de um ambiente virtual (venv) para isolar as dependências do projeto.
 
-    # macOS/Linux
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
+No Windows:
+Bash
 
-3.  Crie um arquivo `requirements.txt` na raiz do projeto com o seguinte conteúdo:
-    ```txt
-    streamlit
-    pandas
-    ```
+# Criar o ambiente
+python -m venv venv
 
-4.  Instale as dependências:
-    ```bash
-    pip install -r requirements.txt
-    ```
+# Ativar o ambiente
+.\venv\Scripts\activate
 
-### 3. Execução
+No macOS ou Linux:
+Bash
 
-1.  Na pasta raiz do projeto (onde está o `login.py`), execute o Streamlit:
-    ```bash
-    streamlit run login.py
-    ```
+# Criar o ambiente
+python3 -m venv venv
 
-2.  O aplicativo será aberto automaticamente no seu navegador padrão.
+# Ativar o ambiente
+source venv/bin/activate
+
+3. Instalação das Bibliotecas
+
+Com o venv ativado, instale as bibliotecas necessárias que estão listadas no requirements.txt. Este projeto utiliza apenas duas dependências principais:
+Bash
+
+pip install Flask Werkzeug
+
+    Flask: O micro-framework web usado para construir a aplicação.
+
+    Werkzeug: Usado pelo Flask para criptografar e verificar as senhas dos usuários.
+
+(O sqlite3, usado para o banco de dados, já faz parte da biblioteca padrão do Python).
+
+▶️ Como Executar a Aplicação
+
+Com o ambiente configurado, siga estes dois passos:
+
+1. Inicializar o Banco de Dados
+
+Antes de executar a aplicação pela primeira vez, você precisa criar o banco de dados e as tabelas. Execute o script init_db.py uma única vez:
+Bash
+
+python init_db.py
+
+Isso criará o arquivo saude.db na pasta do projeto, contendo as tabelas usuarios, medicos e lembretes.
+
+2. Iniciar o Servidor Flask
+
+Agora, inicie o servidor de desenvolvimento:
+Bash
+
+flask run
+
+O servidor estará ativo e a aplicação pode ser acessada no seu navegador no endereço: http://127.0.0.1:5000
+
+🗃️ Como Visualizar o Banco de Dados
+
+Os dados (usuários, médicos, lembretes) são salvos no arquivo saude.db, que é um banco de dados SQLite. Você não pode abri-lo com um editor de texto.
+
+A melhor forma de visualizar ou editar os dados é usando uma ferramenta de banco de dados.
+
+Como abrir: Extensão do VS Code (Recomendado)
+
+    No VS Code, vá até a aba "Extensões".
+
+    Procure e instale a extensão "SQLite" (criada por alexcvzz).
+
+    Importante (se você usa Linux): Esta extensão pode exigir que o sqlite3 esteja instalado no seu sistema. Se necessário, rode: sudo apt install sqlite3.
+
+    Após a instalação, clique com o botão direito no arquivo saude.db no explorador de arquivos.
+
+    Selecione "Open Database".
+
+    Um novo painel "SQLITE EXPLORER" aparecerá na sua barra lateral, permitindo que você navegue pelas tabelas e veja todos os dados.
