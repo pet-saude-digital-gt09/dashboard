@@ -1,0 +1,167 @@
+/* Configurações Globais */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6; /* Um cinza muito claro, quase branco */
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* --- Design "Branco e Leve" (Cards) --- */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+/* --- Menu de Navegação --- */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+.navbar-brand {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #0056b3; /* Cor de destaque */
+}
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.navbar-nav li {
+    margin-left: 20px;
+}
+.navbar-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.navbar-nav a:hover {
+    color: #0056b3;
+}
+.navbar-nav a.logout-btn {
+    color: #d9534f; /* Vermelho para sair */
+}
+
+/* --- Formulários --- */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Garante que o padding não afete a largura */
+}
+
+.form-inline {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+.form-inline .form-group {
+    flex-grow: 1; /* Faz os campos de input crescerem */
+    margin-bottom: 0;
+}
+
+/* --- Botões --- */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.btn-danger-sm {
+    background-color: #fbeaea;
+    color: #d9534f;
+    padding: 5px 8px;
+    font-size: 0.8em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* --- Tela de Login --- */
+.login-container {
+    max-width: 450px;
+    margin: 50px auto;
+}
+
+/* --- Tabelas (Cronograma) --- */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.styled-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+}
+.styled-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Lembretes --- */
+#lista-lembretes ul {
+    list-style: none;
+    padding: 0;
+}
+#lista-lembretes li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- Alertas/Flash Messages --- */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+.alert-success { background-color: #d4edda; color: #155724; }
+.alert-danger { background-color: #f8d7da; color: #721c24; }
+.alert-warning { background-color: #fff3cd; color: #856404; }
+.alert-info { background-color: #d1ecf1; color: #0c5460; }

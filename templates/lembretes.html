@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>⏰ Lembretes de Remédios</h2>
+<p>Adicione lembretes para não esquecer seus medicamentos.</p>
+
+<div class="card">
+    <h3>Novo Lembrete</h3>
+    <form id="form-lembrete" class="form-inline">
+        <div class="form-group">
+            <label for="remedio-nome">Nome do Remédio</label>
+            <input type="text" id="remedio-nome" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="remedio-horario">Horário (ex: 08:00)</label>
+            <input type="time" id="remedio-horario" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+    </form>
+</div>
+
+<div class="card" id="lista-lembretes-container">
+    <h3>Seus Lembretes</h3>
+    <ul id="lista-lembretes">
+        <li>
+            <span>Paracetamol (Exemplo)</span>
+            <span>12:00</span>
+            <button class="btn-danger-sm">Remover</button>
+        </li>
+    </ul>
+</div>
+{% endblock %}

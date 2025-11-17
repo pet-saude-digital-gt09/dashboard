@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>🗓️ Cronograma de Médicos</h2>
+<p>Veja a disponibilidade dos profissionais na unidade de saúde.</p>
+
+<div class="card">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Médico(a)</th>
+                <th>Especialidade</th>
+                <th>Dia</th>
+                <th>Horário</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medico in medicos %}
+            <tr>
+                <td>{{ medico.medico }}</td>
+                <td>{{ medico.especialidade }}</td>
+                <td>{{ medico.dia }}</td>
+                <td>{{ medico.horario }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
