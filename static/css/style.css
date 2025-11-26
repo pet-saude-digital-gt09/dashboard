@@ -165,3 +165,288 @@ body {
 .alert-danger { background-color: #f8d7da; color: #721c24; }
 .alert-warning { background-color: #fff3cd; color: #856404; }
 .alert-info { background-color: #d1ecf1; color: #0c5460; }
+
+/* --- ADIÇÕES PARA A HOMEPAGE (LANDING PAGE) --- */
+
+/* --- ESTILOS EXCLUSIVOS DA HOMEPAGE --- */
+
+/* Hero Section (Área Principal) */
+.home-hero {
+    background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%); /* Degradê Azul Suave */
+    padding: 60px 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 25px rgba(0, 86, 179, 0.05); /* Sombra leve */
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    color: #0d47a1; /* Azul forte */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-lg {
+    padding: 12px 35px;
+    font-size: 1.1em;
+    border-radius: 50px; /* Botões redondos são mais modernos */
+    transition: transform 0.2s;
+}
+
+.btn-lg:hover {
+    transform: scale(1.05); /* Botão cresce um pouco ao passar o mouse */
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+}
+
+/* Arte com Emojis (já que não temos imagens) */
+.hero-image .emoji-art {
+    font-size: 5em;
+    letter-spacing: -10px;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+    animation: float 3s ease-in-out infinite;
+    display: block;
+}
+
+/* Animação simples de flutuar */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Features Section */
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo automático */
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px); /* Card sobe */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: #b3e5fc;
+}
+
+/* Ícones redondos coloridos */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 2em;
+    margin: 0 auto 20px auto;
+}
+
+.icon-box.blue { background-color: #e3f2fd; }
+.icon-box.green { background-color: #e8f5e9; }
+.icon-box.purple { background-color: #f3e5f5; }
+
+/* Mobile: Ajuste para celulares */
+@media (max-width: 768px) {
+    .home-hero {
+        flex-direction: column-reverse; /* Imagem vai para cima no celular */
+        text-align: center;
+        padding: 40px 20px;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2em;
+    }
+}
+
+/* --- DASHBOARD / HALL (ÁREA LOGADA) --- */
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.dashboard-card {
+    display: block; /* Para o link funcionar no card todo */
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-decoration: none; /* Remove sublinhado do link */
+    color: #333;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid transparent;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.dashboard-card h3 {
+    margin: 10px 0;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.dashboard-card p {
+    color: #666;
+    font-size: 0.95em;
+}
+
+/* Cores de borda/hover para cada card */
+.card-blue:hover { border-color: #007bff; }
+.card-blue h3 { color: #0056b3; }
+
+.card-green:hover { border-color: #28a745; }
+.card-green h3 { color: #1e7e34; }
+
+.card-purple:hover { border-color: #6f42c1; }
+.card-purple h3 { color: #5a32a3; }
+
+/* --- CARDS GIRATÓRIOS (FLIP CARDS) --- */
+
+.info-section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.flip-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+/* O container do card (define o tamanho) */
+.flip-card {
+    background-color: transparent;
+    width: 200px;
+    height: 250px;
+    perspective: 1000px; /* Isso cria o efeito 3D de profundidade */
+    cursor: pointer;
+}
+
+/* O container interno que vai girar */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+/* Ação de girar ao passar o mouse */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Configuração comum para Frente e Verso */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden; /* Esconde o lado de trás do elemento */
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Estilo da Frente */
+.flip-card-front {
+    color: #333;
+    border: 1px solid #eee;
+}
+
+.flip-icon {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+}
+
+.flip-card-front h3 {
+    font-size: 1.2em;
+    color: #444;
+}
+
+/* Estilo do Verso */
+.flip-card-back {
+    background-color: #0056b3; /* Cor de fundo do verso (Azul Saúde) */
+    color: white;
+    transform: rotateY(180deg); /* Já começa virado para trás */
+}
+
+.flip-card-back h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 5px;
+}
+
+.flip-card-back p {
+    font-size: 0.9em;
+    line-height: 1.4;
+}

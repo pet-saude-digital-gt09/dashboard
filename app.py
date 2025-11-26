@@ -88,9 +88,13 @@ def login_required(f):
 
 @app.route('/')
 def index():
+    """Página Inicial (Landing Page)."""
+    # Se já estiver logado, manda direto para a área interna
     if 'cpf_logado' in session:
         return redirect(url_for('home'))
-    return redirect(url_for('login'))
+    
+    # Se não, renderiza a página de apresentação
+    return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -123,7 +127,7 @@ def login():
 def logout():
     session.clear() # Limpa toda a sessão
     flash('Você saiu do sistema.', 'info')
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
@@ -183,7 +187,48 @@ def cadastro():
 @app.route('/home')
 @login_required
 def home():
-    """Tela de Orientação (Lógica de dicas permanece a mesma)."""
+    """Tela Principal (Hall / Dashboard)."""
+    
+    # Dados dos Cards Giratórios
+    cards_info = [
+        {
+            'titulo': 'Saúde do Homem',
+            'icone': '👨',
+            'front_color': '#e3f2fd', # Azul claro
+            'texto': 'Realize check-ups anuais. A prevenção contra o câncer de próstata e doenças cardiovasculares começa aos 40 anos.'
+        },
+        {
+            'titulo': 'Saúde da Mulher',
+            'icone': '👩',
+            'front_color': '#fce4ec', # Rosa claro
+            'texto': 'O preventivo e a mamografia são essenciais. Mantenha seus exames em dia para prevenir câncer de colo de útero e mama.'
+        },
+        {
+            'titulo': 'Saúde do Idoso',
+            'icone': '👴',
+            'front_color': '#fff3e0', # Laranja claro
+            'texto': 'Atenção à prevenção de quedas, vacinação contra gripe e controle da pressão arterial. Hidratação é fundamental!'
+        },
+        {
+            'titulo': 'Saúde da Criança',
+            'icone': '👶',
+            'front_color': '#e8f5e9', # Verde claro
+            'texto': 'Mantenha a carteira de vacinação atualizada. O acompanhamento do crescimento e desenvolvimento é vital.'
+        },
+        {
+            'titulo': 'Saúde Adolescente',
+            'icone': '👱',
+            'front_color': '#f3e5f5', # Roxo claro
+            'texto': 'Foco na saúde mental, prevenção de ISTs e prática de esportes. É o momento de criar hábitos para a vida toda.'
+        }
+    ]
+
+    return render_template('home.html', cards_info=cards_info)
+
+@app.route('/orientacoes')
+@login_required
+def orientacoes():
+    """Tela de Orientações (Antiga lógica da Home)."""
     grupos = session.get('grupo_risco', [])
     dicas = DICAS_SAUDE['Geral'].copy()
     
@@ -191,7 +236,8 @@ def home():
         if grupo in DICAS_SAUDE:
             dicas.extend(DICAS_SAUDE[grupo])
             
-    return render_template('home.html', dicas=dicas, grupos_de_risco=grupos)
+    # Note que agora renderiza 'orientacoes.html'
+    return render_template('orientacoes.html', dicas=dicas, grupos_de_risco=grupos)
 
 @app.route('/cronograma')
 @login_required
