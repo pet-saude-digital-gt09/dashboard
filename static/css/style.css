@@ -1,7 +1,9 @@
-/* Configurações Globais */
+/* =========================================
+   1. CONFIGURAÇÕES GLOBAIS
+   ========================================= */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f7f6; /* Um cinza muito claro, quase branco */
+    background-color: #f4f7f6; /* Cinza muito claro */
     color: #333;
     margin: 0;
     line-height: 1.6;
@@ -13,7 +15,7 @@ body {
     padding: 0 20px;
 }
 
-/* --- Design "Branco e Leve" (Cards) --- */
+/* Design "Branco e Leve" (Cards Padrão) */
 .card {
     background-color: #ffffff;
     border-radius: 8px;
@@ -22,164 +24,69 @@ body {
     margin-bottom: 20px;
 }
 
-/* --- Menu de Navegação --- */
+/* =========================================
+   2. MENU DE NAVEGAÇÃO (NAVBAR)
+   ========================================= */
 .navbar {
     background-color: #ffffff;
     border-bottom: 1px solid #e0e0e0;
-    padding: 10px 0;
+    padding: 15px 0;
     margin-bottom: 30px;
 }
+
 .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
 }
+
 .navbar-brand {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #0056b3; /* Cor de destaque */
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #0056b3;
+    text-decoration: none;
 }
+
 .navbar-nav {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
+
 .navbar-nav li {
     margin-left: 20px;
 }
+
 .navbar-nav a {
     text-decoration: none;
     color: #555;
     font-weight: 500;
     transition: color 0.3s;
 }
+
 .navbar-nav a:hover {
     color: #0056b3;
 }
+
 .navbar-nav a.logout-btn {
     color: #d9534f; /* Vermelho para sair */
 }
 
-/* --- Formulários --- */
-.form-group {
-    margin-bottom: 15px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Garante que o padding não afete a largura */
-}
-
-.form-inline {
-    display: flex;
-    gap: 15px;
-    align-items: flex-end;
-}
-.form-inline .form-group {
-    flex-grow: 1; /* Faz os campos de input crescerem */
-    margin-bottom: 0;
-}
-
-/* --- Botões --- */
-.btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-block;
-}
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s;
-}
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-.btn-danger-sm {
-    background-color: #fbeaea;
-    color: #d9534f;
-    padding: 5px 8px;
-    font-size: 0.8em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* --- Tela de Login --- */
-.login-container {
-    max-width: 450px;
-    margin: 50px auto;
-}
-
-/* --- Tabelas (Cronograma) --- */
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-.styled-table th, .styled-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-.styled-table th {
-    background-color: #f9f9f9;
-    font-weight: 600;
-}
-.styled-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* --- Lembretes --- */
-#lista-lembretes ul {
-    list-style: none;
-    padding: 0;
-}
-#lista-lembretes li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-/* --- Alertas/Flash Messages --- */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid transparent;
-}
-.alert-success { background-color: #d4edda; color: #155724; }
-.alert-danger { background-color: #f8d7da; color: #721c24; }
-.alert-warning { background-color: #fff3cd; color: #856404; }
-.alert-info { background-color: #d1ecf1; color: #0c5460; }
-
-/* --- ADIÇÕES PARA A HOMEPAGE (LANDING PAGE) --- */
-
-/* --- ESTILOS EXCLUSIVOS DA HOMEPAGE --- */
-
-/* Hero Section (Área Principal) */
+/* =========================================
+   3. HOMEPAGE (LANDING PAGE - PÚBLICA)
+   ========================================= */
 .home-hero {
-    background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%); /* Degradê Azul Suave */
+    background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
     padding: 60px 40px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 50px;
-    box-shadow: 0 10px 25px rgba(0, 86, 179, 0.05); /* Sombra leve */
+    box-shadow: 0 10px 25px rgba(0, 86, 179, 0.05);
 }
 
 .hero-content {
@@ -188,7 +95,7 @@ body {
 
 .hero-content h1 {
     font-size: 3em;
-    color: #0d47a1; /* Azul forte */
+    color: #0d47a1;
     margin-bottom: 20px;
     line-height: 1.2;
 }
@@ -204,24 +111,7 @@ body {
     gap: 15px;
 }
 
-.btn-lg {
-    padding: 12px 35px;
-    font-size: 1.1em;
-    border-radius: 50px; /* Botões redondos são mais modernos */
-    transition: transform 0.2s;
-}
-
-.btn-lg:hover {
-    transform: scale(1.05); /* Botão cresce um pouco ao passar o mouse */
-}
-
-.btn-outline {
-    background-color: transparent;
-    border: 2px solid #007bff;
-    color: #007bff;
-}
-
-/* Arte com Emojis (já que não temos imagens) */
+/* Animação dos Emojis Flutuantes */
 .hero-image .emoji-art {
     font-size: 5em;
     letter-spacing: -10px;
@@ -230,27 +120,21 @@ body {
     display: block;
 }
 
-/* Animação simples de flutuar */
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-15px); }
     100% { transform: translateY(0px); }
 }
 
-/* Features Section */
-.section-header {
+/* Grid de Funcionalidades (Ícones redondos) */
+.home-features .section-header {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.section-header h2 {
-    font-size: 2em;
-    color: #333;
-}
-
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo automático */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -261,15 +145,15 @@ body {
     text-align: center;
     border: 1px solid #eee;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .feature-card:hover {
-    transform: translateY(-10px); /* Card sobe */
+    transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.08);
     border-color: #b3e5fc;
 }
 
-/* Ícones redondos coloridos */
 .icon-box {
     width: 70px;
     height: 70px;
@@ -278,30 +162,13 @@ body {
     font-size: 2em;
     margin: 0 auto 20px auto;
 }
-
 .icon-box.blue { background-color: #e3f2fd; }
 .icon-box.green { background-color: #e8f5e9; }
 .icon-box.purple { background-color: #f3e5f5; }
 
-/* Mobile: Ajuste para celulares */
-@media (max-width: 768px) {
-    .home-hero {
-        flex-direction: column-reverse; /* Imagem vai para cima no celular */
-        text-align: center;
-        padding: 40px 20px;
-    }
-    
-    .hero-actions {
-        justify-content: center;
-    }
-    
-    .hero-content h1 {
-        font-size: 2em;
-    }
-}
-
-/* --- DASHBOARD / HALL (ÁREA LOGADA) --- */
-
+/* =========================================
+   4. DASHBOARD / HALL (ÁREA LOGADA)
+   ========================================= */
 .dashboard-header {
     text-align: center;
     margin-bottom: 40px;
@@ -314,11 +181,11 @@ body {
 }
 
 .dashboard-card {
-    display: block; /* Para o link funcionar no card todo */
+    display: block;
     background: #fff;
     padding: 30px;
     border-radius: 12px;
-    text-decoration: none; /* Remove sublinhado do link */
+    text-decoration: none;
     color: #333;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -342,23 +209,16 @@ body {
     font-weight: 600;
 }
 
-.dashboard-card p {
-    color: #666;
-    font-size: 0.95em;
-}
-
-/* Cores de borda/hover para cada card */
 .card-blue:hover { border-color: #007bff; }
 .card-blue h3 { color: #0056b3; }
-
 .card-green:hover { border-color: #28a745; }
 .card-green h3 { color: #1e7e34; }
-
 .card-purple:hover { border-color: #6f42c1; }
 .card-purple h3 { color: #5a32a3; }
 
-/* --- CARDS GIRATÓRIOS (FLIP CARDS) --- */
-
+/* =========================================
+   5. CARDS GIRATÓRIOS (FLIP CARDS)
+   ========================================= */
 .info-section-header {
     text-align: center;
     margin-bottom: 30px;
@@ -368,20 +228,18 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     padding-bottom: 50px;
 }
 
-/* O container do card (define o tamanho) */
 .flip-card {
     background-color: transparent;
-    width: 200px;
-    height: 250px;
-    perspective: 1000px; /* Isso cria o efeito 3D de profundidade */
+    width: 190px; /* Largura ajustada */
+    height: 260px; /* Altura ajustada */
+    perspective: 1000px;
     cursor: pointer;
 }
 
-/* O container interno que vai girar */
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -393,7 +251,6 @@ body {
     border-radius: 15px;
 }
 
-/* Ação de girar ao passar o mouse */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
@@ -403,21 +260,21 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden; /* Esconde o lado de trás do elemento */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     border-radius: 15px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
 }
 
-/* Estilo da Frente */
+/* Frente */
 .flip-card-front {
     color: #333;
     border: 1px solid #eee;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;
 }
 
 .flip-icon {
@@ -428,25 +285,227 @@ body {
 .flip-card-front h3 {
     font-size: 1.2em;
     color: #444;
+    padding: 0 15px;
+    line-height: 1.3;
 }
 
-/* Estilo do Verso */
+/* Verso (Atualizado) */
 .flip-card-back {
-    background-color: #0056b3; /* Cor de fundo do verso (Azul Saúde) */
-    color: white;
-    transform: rotateY(180deg); /* Já começa virado para trás */
+    /* Cor de fundo é definida via HTML style="..." */
+    color: #333; 
+    transform: rotateY(180deg);
+    border: 1px solid #ddd;
+    
+    /* Organização do conteúdo */
+    justify-content: flex-start; /* Joga o texto para o topo */
+    padding-top: 10px; /* Respiro no topo */
+    padding-bottom: 60px; /* Respiro embaixo para o botão fixo */
+    align-items: center;
+    position: absolute;
 }
 
 .flip-card-back h3 {
-    font-size: 1em;
+    font-size: 0.95em;
     margin-bottom: 10px;
+    margin-top: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     padding-bottom: 5px;
+    width: 100%;
 }
 
 .flip-card-back p {
     font-size: 0.9em;
     line-height: 1.4;
+    text-align: center;
+}
+
+/* Botão "Ver Detalhes" Fixo no fundo do Card */
+.btn-card-action {
+    position: absolute;
+    bottom: 10px; /* Distância fixa do fundo */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza exato */
+    
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #333;
+    padding: 3px 9px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-card-action:hover {
+    color: #0056b3;
+    border-color: #0056b3;
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* =========================================
+   6. PÁGINA DE DETALHES (GUIA DE SAÚDE)
+   ========================================= */
+.detail-card-expanded {
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.detail-header-large {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.detail-icon-large {
+    font-size: 5em;
+    min-width: 120px;
+    height: 120px;
+    background-color: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid #e1e8ed;
+}
+
+.detail-title-group h2 {
+    font-size: 2.2em;
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.detail-title-group .lead {
+    font-size: 1.2em;
+    color: #666;
+    font-weight: 400;
+}
+
+.divider-main {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    margin: 30px 0;
+}
+
+.section-block {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+    border-left: 5px solid #007bff;
+    padding-left: 15px;
+    background: linear-gradient(to right, #f9f9f9, #fff);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 0 5px 5px 0;
+}
+
+.detail-list-expanded {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-list-expanded li {
+    position: relative;
+    padding: 10px 0 10px 30px;
+    border-bottom: 1px dashed #eee;
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.6;
+}
+
+.detail-list-expanded li:before {
+    content: '•';
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.5em;
+    position: absolute;
+    left: 5px;
+    top: 2px;
+}
+
+.detail-list-expanded li:last-child {
+    border-bottom: none;
+}
+
+/* =========================================
+   7. COMPONENTES GERAIS (FORMS, ALERTAS, ETC)
+   ========================================= */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+.form-control {
+    width: 100%; padding: 10px;
+    border: 1px solid #ccc; border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none; border-radius: 5px;
+    cursor: pointer; font-weight: 600;
+    text-decoration: none; display: inline-block;
+}
+.btn-primary {
+    background-color: #007bff; color: white;
+    transition: background-color 0.3s;
+}
+.btn-primary:hover { background-color: #0056b3; }
+.btn-lg { padding: 12px 35px; font-size: 1.1em; border-radius: 50px; }
+.btn-lg:hover { transform: scale(1.05); }
+
+.btn-outline {
+    background-color: transparent; border: 2px solid #007bff;
+    color: #007bff;
+}
+.btn-outline:hover { background-color: #007bff; color: white; }
+
+.login-container { max-width: 450px; margin: 50px auto; }
+
+/* Tabelas */
+.styled-table { width: 100%; border-collapse: collapse; }
+.styled-table th, .styled-table td {
+    padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee;
+}
+.styled-table th { background-color: #f9f9f9; font-weight: 600; }
+
+/* Lembretes */
+#lista-lembretes ul { list-style: none; padding: 0; }
+#lista-lembretes li {
+    display: flex; justify-content: space-between;
+    align-items: center; padding: 10px; border-bottom: 1px solid #eee;
+}
+
+/* Alertas */
+.alert {
+    padding: 15px; margin-bottom: 20px;
+    border-radius: 5px; border: 1px solid transparent;
+}
+.alert-success { background-color: #d4edda; color: #155724; }
+.alert-danger { background-color: #f8d7da; color: #721c24; }
+.alert-warning { background-color: #fff3cd; color: #856404; }
+.alert-info { background-color: #d1ecf1; color: #0c5460; }
+
+/* =========================================
+   8. RESPONSIVIDADE
+   ========================================= */
+@media (max-width: 768px) {
+    .home-hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .hero-actions { justify-content: center; }
+    .detail-header-large { flex-direction: column; text-align: center; }
+    .detail-card-expanded { padding: 20px; }
 }

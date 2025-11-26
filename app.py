@@ -24,6 +24,154 @@ DICAS_SAUDE = {
     ]
 }
 
+DETALHES_GRUPOS = {
+    'homem': {
+        'titulo': 'Saúde do Homem',
+        'icone': '👨',
+        'desc': 'Cuidar de si é um ato de responsabilidade, força e proteção para você e sua família.',
+        'secoes': [
+            {
+                'titulo': '🛡️ Prevenção e Exames',
+                'itens': [
+                    'Acesso: Procure a unidade de saúde mesmo sem estar doente. Agende consultas preventivas de 1 a 2 vezes por ano.',
+                    'Câncer de Próstata: Converse sobre exames a partir dos 50 anos (ou 45 se houver fatores de risco na família).',
+                    'Doenças Crônicas: Monitore pressão e glicemia regularmente para prevenir hipertensão e diabetes.'
+                ]
+            },
+            {
+                'titulo': '❤️ Saúde Sexual e Reprodutiva',
+                'itens': [
+                    'Sinal de Alerta: A disfunção erétil pode ser um sinal de problemas cardíacos. Não ignore.',
+                    'Proteção: Use preservativo em todas as relações sexuais e faça testes regulares de ISTs.'
+                ]
+            },
+            {
+                'titulo': '👶 Paternidade Ativa',
+                'itens': [
+                    'Pré-Natal do Parceiro: Acompanhe as consultas da gestante e participe das decisões.',
+                    'Dia a Dia: Dividir tarefas como banho e troca de fraldas fortalece o vínculo com a criança.'
+                ]
+            }
+        ]
+    },
+    'mulher': {
+        'titulo': 'Saúde da Mulher',
+        'icone': '👩',
+        'desc': 'Atenção integral em todas as fases da vida, garantindo autonomia, prevenção de doenças e direitos.',
+        'secoes': [
+            {
+                'titulo': '🌸 Prevenção',
+                'itens': [
+                    'Preventivo (Papanicolau): Indicado para mulheres de 25 a 64 anos. Deve ser feito anualmente ou conforme orientação.',
+                    'Sinais de Alerta: Procure atendimento se houver lesões, verrugas ou corrimento com odor forte.'
+                ]
+            },
+            {
+                'titulo': '💊 Planejamento Reprodutivo',
+                'itens': [
+                    'Métodos Gratuitos: O SUS oferece DIU de cobre (dura 10 anos), pílulas, injeções e preservativos.',
+                    'DIU de Cobre: Alta eficácia (mais de 99%), sem hormônios e pode ser usado por quem nunca engravidou.',
+                    'Direito de Escolha: Laqueadura tubária permitida para maiores de 21 anos ou com dois filhos vivos.'
+                ]
+            },
+            {
+                'titulo': '🤰 Maternidade e Direitos',
+                'itens': [
+                    'Pré-Natal: Iniciar cedo para garantir o desenvolvimento saudável. Direito a acompanhante no parto.',
+                    'Violência: Em caso de violência sexual ou doméstica, o atendimento é prioritário e não exige agendamento.'
+                ]
+            }
+        ]
+    },
+    'idoso': {
+        'titulo': 'Saúde da Pessoa Idosa',
+        'icone': '👴',
+        'desc': 'Envelhecimento ativo e saudável. O foco é manter a independência, a autonomia e a segurança no dia a dia.',
+        'secoes': [
+            {
+                'titulo': '🏠 Prevenção de Quedas',
+                'itens': [
+                    'Casa Segura: Retire tapetes soltos, fios do chão e instale corrimãos nas escadas.',
+                    'Calçados: Use sapatos fechados, firmes e com solado antiderrapante. Evite chinelos soltos.',
+                    'Iluminação: Mantenha a casa bem iluminada, especialmente o caminho para o banheiro à noite.'
+                ]
+            },
+            {
+                'titulo': '💊 Uso de Medicamentos',
+                'itens': [
+                    'Organização: Mantenha na embalagem original e verifique a validade com frequência.',
+                    'Armazenamento: Não guarde remédios na porta da geladeira nem junto com produtos de limpeza.'
+                ]
+            },
+            {
+                'titulo': '⚖️ Direitos',
+                'itens': [
+                    'Identificação: Para garantir direitos de idoso (60+), basta apresentar documento oficial com foto.',
+                    'Denúncia: Em caso de violência ou negligência, disque 100.'
+                ]
+            }
+        ]
+    },
+    'crianca': {
+        'titulo': 'Saúde da Criança',
+        'icone': '👶',
+        'desc': 'Os primeiros anos definem o futuro. Garanta um ambiente saudável, seguro e estimulante.',
+        'secoes': [
+            {
+                'titulo': '🧪 Triagem Neonatal',
+                'itens': [
+                    'Teste do Pezinho: Realizado entre o 3º e 5º dia de vida. Detecta doenças graves.',
+                    'Outros Testes: Exija os testes do Olhinho (visão), Orelhinha (audição) e Coraçãozinho na maternidade.'
+                ]
+            },
+            {
+                'titulo': '🚩 Sinais de Alerta',
+                'itens': [
+                    'Visão: Atenção se a criança aproxima muito os objetos ou tem dificuldade de focar.',
+                    'Audição: Atenção se a criança não reage a barulhos fortes ou demora para falar.',
+                    'Motor: Atraso para rolar, engatinhar ou andar exige avaliação médica.'
+                ]
+            },
+            {
+                'titulo': '🍼 Nutrição e Vacinas',
+                'itens': [
+                    'Leite Materno: Exclusivo até os 6 meses e complementar até os 2 anos ou mais.',
+                    'Vacinação: Direito fundamental da criança. Mantenha a caderneta sempre atualizada.'
+                ]
+            }
+        ]
+    },
+    'adolescente': {
+        'titulo': 'Saúde do Adolescente',
+        'icone': '👱',
+        'desc': 'Fase de transformações. Você tem direito a sigilo médico e orientações sobre seu corpo e mente.',
+        'secoes': [
+            {
+                'titulo': '🔒 Seus Direitos',
+                'itens': [
+                    'Sigilo: O que você conversa com o profissional de saúde é confidencial. Você pode ser atendido sozinho.',
+                    'Dúvidas: Pergunte sem vergonha sobre mudanças no corpo, sexualidade e sentimentos.'
+                ]
+            },
+            {
+                'titulo': '🧠 Saúde Mental',
+                'itens': [
+                    'Emoções: É normal sentir ansiedade. Se o sofrimento for grande, procure a UBS.',
+                    'Sono: Tente dormir entre 8 e 10 horas por noite. Evite telas antes de dormir.'
+                ]
+            },
+            {
+                'titulo': '⚠️ Cuidados',
+                'itens': [
+                    'Sexualidade: Use camisinha em todas as relações para prevenir gravidez e ISTs.',
+                    'Internet: Cuidado com a exposição. Não envie fotos íntimas e peça ajuda se sofrer violência online.'
+                ]
+            }
+        ]
+    }
+}
+
+
 def is_cpf_valido(cpf: str) -> bool:
     """Valida um CPF brasileiro."""
     
@@ -193,30 +341,35 @@ def home():
     cards_info = [
         {
             'titulo': 'Saúde do Homem',
+            'slug': 'homem',
             'icone': '👨',
             'front_color': '#e3f2fd', # Azul claro
             'texto': 'Realize check-ups anuais. A prevenção contra o câncer de próstata e doenças cardiovasculares começa aos 40 anos.'
         },
         {
             'titulo': 'Saúde da Mulher',
+            'slug': 'mulher',
             'icone': '👩',
             'front_color': '#fce4ec', # Rosa claro
             'texto': 'O preventivo e a mamografia são essenciais. Mantenha seus exames em dia para prevenir câncer de colo de útero e mama.'
         },
         {
             'titulo': 'Saúde do Idoso',
+            'slug': 'idoso',
             'icone': '👴',
             'front_color': '#fff3e0', # Laranja claro
             'texto': 'Atenção à prevenção de quedas, vacinação contra gripe e controle da pressão arterial. Hidratação é fundamental!'
         },
         {
             'titulo': 'Saúde da Criança',
+            'slug': 'crianca',
             'icone': '👶',
             'front_color': '#e8f5e9', # Verde claro
             'texto': 'Mantenha a carteira de vacinação atualizada. O acompanhamento do crescimento e desenvolvimento é vital.'
         },
         {
-            'titulo': 'Saúde Adolescente',
+            'titulo': 'Saúde do Adolescente',
+            'slug': 'adolescente',
             'icone': '👱',
             'front_color': '#f3e5f5', # Roxo claro
             'texto': 'Foco na saúde mental, prevenção de ISTs e prática de esportes. É o momento de criar hábitos para a vida toda.'
@@ -224,6 +377,18 @@ def home():
     ]
 
     return render_template('home.html', cards_info=cards_info)
+
+@app.route('/saude/<grupo>')
+@login_required
+def detalhes_saude(grupo):
+    # Busca as informações no dicionário
+    dados = DETALHES_GRUPOS.get(grupo)
+    
+    if not dados:
+        flash('Página não encontrada.', 'danger')
+        return redirect(url_for('home'))
+        
+    return render_template('detalhes_saude.html', dados=dados)
 
 @app.route('/orientacoes')
 @login_required

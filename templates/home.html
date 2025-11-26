@@ -45,9 +45,13 @@
                     <h3>{{ card.titulo }}</h3>
                 </div>
 
-                <div class="flip-card-back">
-                    <h3>Dica Importante:</h3>
+                <div class="flip-card-back" style="background-color: {{ card.front_color }};">
+                    <h3>Dica Rápida:</h3>
                     <p>{{ card.texto }}</p>
+                    
+                    <a href="{{ url_for('detalhes_saude', grupo=card.slug) }}" class="btn-card-action">
+                        Ver Detalhes
+                    </a>
                 </div>
 
             </div>
