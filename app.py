@@ -288,8 +288,26 @@ def cadastro():
         senha = request.form['senha']
         confirmar_senha = request.form['confirmar_senha']
         # .strip() remove espaços em branco antes e depois
-        grupo_risco = request.form['grupo_risco'].strip() 
 
+        lista_riscos = request.form.getlist('grupo_risco')
+        
+        opcoes_doencas = ['Hipertenso', 'Diabético']
+        tem_doenca = any(item in lista_riscos for item in opcoes_doencas)
+        
+        if tem_doenca and "Sem comorbidade" in lista_riscos:
+            lista_riscos.remove("Sem comorbidade")
+        # # Lógica inteligente: Se marcou "Hipertenso" E "Sem comorbidade", 
+        # # removemos o "Sem comorbidade" para não ficar contraditório.
+        # if len(lista_riscos) > 1 and "Sem comorbidade" in lista_riscos:
+        #     lista_riscos.remove("Sem comorbidade")
+        
+        # # Se o usuário não marcou nada, definimos como "Sem comorbidade"
+        if not lista_riscos:
+             lista_riscos = ["Sem comorbidade"]
+
+        # Transformamos a lista em uma string separada por vírgulas para o Banco de Dados
+        # Ex: ['Hipertenso', 'Diabético'] vira "Hipertenso,Diabético"
+        grupo_risco_str = ",".join(lista_riscos)
         # 2. Validações
         if not all([nome, cpf, senha, confirmar_senha]):
             flash('Por favor, preencha todos os campos obrigatórios.', 'danger')
@@ -317,7 +335,7 @@ def cadastro():
         try:
             conn.execute(
                 "INSERT INTO usuarios (cpf, nome, senha_hash, grupo_risco) VALUES (?, ?, ?, ?)",
-                (cpf, nome, senha_hash, grupo_risco)
+                (cpf, nome, senha_hash, grupo_risco_str)
             )
             conn.commit()
             flash(f'Usuário {nome} cadastrado com sucesso! Faça o login.', 'success')
