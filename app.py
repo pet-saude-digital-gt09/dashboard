@@ -9,14 +9,28 @@ app.config['SECRET_KEY'] = 'uma-chave-secreta-muito-forte'
 
 DICAS_SAUDE = {
     'Hipertenso': [
-        'Reduza o consumo de sal (sódio) nas refeições.',
-        'Pratique atividade física regularmente, como caminhada, por 30 minutos por dia.',
-        'Meça sua pressão arterial regularmente e mantenha um registro.'
-    ],
+        'Não espere sentir sintomas; a pressão alta geralmente não apresenta sinais visíveis.',
+        'Fique atento, pois pressão 14 por 9 (ou superior) já é considerada pressão alta.',
+        'Diminua o consumo de sal e utilize temperos naturais para dar sabor à comida.',
+        'A pressão alta não tem cura, mas tem controle, por isso é fundamental seguir o tratamento continuamente.',
+        'Dor na nuca, tontura ou visão embaçada? Pode ser pressão altíssima. Procure um médico.',
+        'O controle da pressão é vital para evitar AVC (derrame), infarto e problemas nos rins.',
+        'Controle o peso, uma vez que a obesidade é uma das principais causas da pressão alta.',
+        'A falta de atividade física piora a pressão, portanto, mexa-se.',
+        'Pare de fumar, pois o cigarro aumenta a pressão arterial.',
+        'Controle o estresse emocional, pois ele eleva a sua pressão.'
+
+        ],
     'Diabético': [
-        'Monitore seus níveis de glicose no sangue conforme orientação médica.',
-        'Prefira alimentos integrais, frutas e vegetais.',
-        'Examine seus pés diariamente em busca de pequenos ferimentos.'
+        'Examine seus pés todos os dias. Procure cortes, bolhas ou rachaduras.',
+        'Fique atento a sintomas como tremedeira, suor frio ou tontura; isso pode indicar açúcar baixo.',
+        'Não pule refeições. Comer nos horários certos evita o açúcar baixo (hipoglicemia).',
+        'Meça seu açúcar no sangue (glicemia) regularmente, várias vezes ao dia.',
+        'Não interrompa o tratamento e tome seus medicamentos todos os dias, exatamente como o médico receitou.',
+        'Faça os exames de urina e sangue. Cuidar do rim hoje evita a hemodiálise amanhã.',
+        'Pare de fumar, pois o cigarro piora a circulação e aumenta drasticamente o risco de amputação.',
+        'Mantenha o peso controlado, pois o sobrepeso é um risco enorme para o diabetes.',
+        'Fuja do sedentarismo, pois a atividade física é essencial para o controle da doença.'
     ],
     'Geral': [
         'Beba pelo menos 2 litros de água por dia.',
