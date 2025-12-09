@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="home-hero">
+    <div class="hero-content">
+        <h1>Sua saúde organizada, <br>sua vida tranquila.</h1>
+        <p>
+            O <strong>Saúde em Dia</strong> ajuda você a controlar hipertensão, diabetes e 
+            lembra da hora exata dos seus remédios. Simples, rápido e gratuito.
+        </p>
+        <div class="hero-actions">
+            <a href="{{ url_for('cadastro') }}" class="btn btn-primary btn-lg">Começar Agora</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline btn-lg">Fazer Login</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <span class="emoji-art">🩺💙💊</span>
+    </div>
+</div>
+
+<section class="home-features">
+    <div class="section-header">
+        <h2>Por que usar o Saúde em Dia?</h2>
+        <p>Ferramentas essenciais para o seu bem-estar.</p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="icon-box blue">💊</div>
+            <h3>Lembretes Inteligentes</h3>
+            <p>Receba alertas na hora de tomar seus medicamentos. Nunca mais pule uma dose.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon-box green">🥗</div>
+            <h3>Dicas de Saúde</h3>
+            <p>Receba orientações específicas se você é hipertenso, diabético ou busca prevenção.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon-box purple">🗓️</div>
+            <h3>Agenda Médica</h3>
+            <p>Consulte o cronograma dos médicos da unidade e se planeje com antecedência.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

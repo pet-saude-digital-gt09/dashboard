@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>💡 Suas Orientações de Saúde</h2>
+
+<div class="perfil-info">
+    <strong>Seu Perfil de Saúde:</strong>
+    {% if grupos_de_risco and grupos_de_risco[0] != '' %}
+        <span>{{ grupos_de_risco|join(', ') }}</span>
+    {% else %}
+        <span>Saúde Geral</span>
+    {% endif %}
+</div>
+
+<p>Com base no seu perfil, aqui estão algumas dicas importantes:</p>
+
+<div class="card-list">
+    {% for dica in dicas %}
+    <div class="card dica-card">
+        <p><strong>{{ dica }}</strong></p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,25 +1,62 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h2>💡 Suas Orientações de Saúde</h2>
-
-<div class="perfil-info">
-    <strong>Seu Perfil de Saúde:</strong>
-    {% if grupos_de_risco and grupos_de_risco[0] != '' %}
-        <span>{{ grupos_de_risco|join(', ') }}</span>
-    {% else %}
-        <span>Saúde Geral</span>
-    {% endif %}
+<div class="dashboard-header">
+    <h2>Bem-vindo(a), {{ session.nome_usuario }}!</h2>
+    <p>O que você deseja fazer hoje?</p>
 </div>
 
-<p>Com base no seu perfil, aqui estão algumas dicas importantes:</p>
+<div class="dashboard-grid">
+    
+    <a href="{{ url_for('orientacoes') }}" class="dashboard-card card-blue">
+        <div class="card-icon">🩺</div>
+        <h3>Minhas Orientações</h3>
+        <p>Veja dicas de saúde personalizadas para você.</p>
+    </a>
 
-<div class="card-list">
-    {% for dica in dicas %}
-    <div class="card dica-card">
-        <p><strong>{{ dica }}</strong></p>
+    <a href="{{ url_for('cronograma') }}" class="dashboard-card card-green">
+        <div class="card-icon">📅</div>
+        <h3>Cronograma Médico</h3>
+        <p>Consulte dias e horários dos especialistas.</p>
+    </a>
+
+    <a href="{{ url_for('lembretes') }}" class="dashboard-card card-purple">
+        <div class="card-icon">⏰</div>
+        <h3>Meus Lembretes</h3>
+        <p>Gerencie os horários dos seus medicamentos.</p>
+    </a>
+
+</div>
+
+<hr style="margin: 50px 0; border: 0; border-top: 1px solid #ddd;">
+
+    <div class="info-section-header">
+        <h2>Guia Rápido por Grupo</h2>
+        <p>Passe o mouse sobre os cards para ver as dicas.</p>
     </div>
-    {% endfor %}
-</div>
+
+    <div class="flip-container">
+        {% for card in cards_info %}
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                
+                <div class="flip-card-front" style="background-color: {{ card.front_color }};">
+                    <div class="flip-icon">{{ card.icone }}</div>
+                    <h3>{{ card.titulo }}</h3>
+                </div>
+
+                <div class="flip-card-back" style="background-color: {{ card.front_color }};">
+                    <h3>Dica Rápida:</h3>
+                    <p>{{ card.texto }}</p>
+                    
+                    <a href="{{ url_for('detalhes_saude', grupo=card.slug) }}" class="btn-card-action">
+                        Ver Detalhes
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

@@ -29,8 +29,24 @@
             </div>
 
             <div class="form-group">
-                <label for="grupo_risco">Grupo de Risco (Ex: Hipertenso, Diabético)</label>
-                <input type="text" id="grupo_risco" name="grupo_risco" class="form-control" placeholder="Separe por vírgula se houver mais de um">
+                <label>Grupo de Risco (Selecione todos que se aplicam):</label>
+                
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px;">
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" id="hipertenso" name="grupo_risco" value="Hipertenso" style="width: auto; margin-right: 5px;">
+                        <label for="hipertenso" style="margin: 0; font-weight: normal;">Hipertenso</label>
+                    </div>
+
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" id="diabetico" name="grupo_risco" value="Diabético" style="width: auto; margin-right: 5px;">
+                        <label for="diabetico" style="margin: 0; font-weight: normal;">Diabético</label>
+                    </div>
+
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" id="sem_comorbidade" name="grupo_risco" value="Sem comorbidade" style="width: auto; margin-right: 5px;">
+                        <label for="sem_comorbidade" style="margin: 0; font-weight: normal;">Sem comorbidade</label>
+                    </div>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -42,4 +58,31 @@
         </p>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkSemComorbidade = document.getElementById('sem_comorbidade');
+        const checkHipertenso = document.getElementById('hipertenso');
+        const checkDiabetico = document.getElementById('diabetico');
+        
+        // Lista com as doenças (excluindo o "sem comorbidade")
+        const doencas = [checkHipertenso, checkDiabetico];
+
+        // 1. Se clicar em "Sem comorbidade", desmarca os outros
+        checkSemComorbidade.addEventListener('change', function() {
+            if (this.checked) {
+                doencas.forEach(checkbox => checkbox.checked = false);
+            }
+        });
+
+        // 2. Se clicar em alguma doença, desmarca "Sem comorbidade"
+        doencas.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    checkSemComorbidade.checked = false;
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}

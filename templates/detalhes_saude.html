@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <a href="{{ url_for('home') }}" class="btn btn-primary" style="margin-bottom: 20px;">&larr; Voltar para o Início</a>
+
+    <div class="card detail-card-expanded">
+        <div class="detail-header-large">
+            <div class="detail-icon-large">{{ dados.icone }}</div>
+            <div class="detail-title-group">
+                <h2>{{ dados.titulo }}</h2>
+                <p class="lead">{{ dados.desc }}</p>
+            </div>
+        </div>
+        
+        <hr class="divider-main">
+        
+        <div class="detail-sections">
+            {% for secao in dados.secoes %}
+            <div class="section-block">
+                <h3 class="section-title">{{ secao.titulo }}</h3>
+                <ul class="detail-list-expanded">
+                    {% for item in secao.itens %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="alert alert-info mt-4">
+            <strong>Importante:</strong> Estas informações são baseadas em diretrizes do Ministério da Saúde. Para diagnósticos e tratamentos, agende uma consulta na sua Unidade Básica de Saúde.
+        </div>
+    </div>
+</div>
+
+{% endblock %}

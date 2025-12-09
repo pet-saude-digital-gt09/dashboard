@@ -13,13 +13,24 @@
     {% if session.cpf_logado %}
     <nav class="navbar">
         <div class="container">
-            <span class="navbar-brand">Olá, {{ session.nome_usuario }}</span>
-            <ul class="navbar-nav">
-                <li><a href="{{ url_for('home') }}">Orientação</a></li>
-                <li><a href="{{ url_for('cronograma') }}">Cronograma</a></li>
-                <li><a href="{{ url_for('lembretes') }}">Lembretes</a></li>
-                <li><a href="{{ url_for('logout') }}" class="logout-btn">Sair</a></li>
-            </ul>
+            {% if session.cpf_logado %}
+                <span class="navbar-brand">Olá, {{ session.nome_usuario }}</span>
+                <ul class="navbar-nav">
+                    <li><a href="{{ url_for('home') }}">Início</a></li>
+                    
+                    <li><a href="{{ url_for('orientacoes') }}">Orientações</a></li>
+                    
+                    <li><a href="{{ url_for('cronograma') }}">Cronograma</a></li>
+                    <li><a href="{{ url_for('lembretes') }}">Lembretes</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="logout-btn">Sair</a></li>
+                </ul>
+            {% else %}
+                <a href="/" class="navbar-brand">Saúde+</a>
+                <ul class="navbar-nav">
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('cadastro') }}" class="btn btn-primary">Cadastrar</a></li>
+                </ul>
+            {% endif %}
         </div>
     </nav>
     {% endif %}
