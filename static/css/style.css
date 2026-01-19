@@ -533,11 +533,219 @@ body {
 }
 .styled-table th { background-color: #f9f9f9; font-weight: 600; }
 
-/* Lembretes */
-#lista-lembretes ul { list-style: none; padding: 0; }
-#lista-lembretes li {
-    display: flex; justify-content: space-between;
-    align-items: center; padding: 10px; border-bottom: 1px solid #eee;
+/* =========================================
+   LEMBRETES - NOVO DESIGN
+   ========================================= */
+
+.lembretes-header {
+    margin-bottom: 40px;
+}
+
+.lembretes-header h1 {
+    font-size: 2.5em;
+    color: #0056b3;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.lembretes-header .lead {
+    color: #999;
+    font-size: 1.05em;
+    margin: 0;
+}
+
+/* Card do Formulário */
+.card-form {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.card-form h3 {
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    font-weight: 600;
+}
+
+.form-lembrete .form-row {
+    display: grid;
+    grid-template-columns: 1fr 200px auto;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.form-lembrete .form-group {
+    margin-bottom: 0;
+}
+
+.form-lembrete .form-group label {
+    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.form-lembrete .form-control {
+    border: 1px solid #d0d0d0;
+    padding: 10px 12px;
+    font-size: 0.95em;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.form-lembrete .form-control:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: none;
+}
+
+.form-lembrete .form-group-btn {
+    display: flex;
+}
+
+.form-lembrete .btn {
+    padding: 10px 25px;
+    font-size: 0.95em;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* Card da Lista */
+.card-lista {
+    background: #ffffff;
+}
+
+.card-lista h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.lembretes-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lembrete-row {
+    display: grid;
+    grid-template-columns: 1fr 90px 45px;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 22px;
+    background: #ffffff;
+    border: 2px solid #e8e8f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.lembrete-row:hover {
+    box-shadow: 0 8px 20px rgba(0, 86, 179, 0.12);
+    border-color: #b3d9ff;
+    transform: translateY(-2px);
+}
+
+.lembrete-hora-badge {
+    background: #ffffff;
+    color: #000000;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    min-width: 60px;
+    border: 2px solid #333333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.lembrete-row:hover .lembrete-hora-badge {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.lembrete-content-row {
+    display: flex;
+    align-items: center;
+}
+
+.lembrete-nome-row {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.05em;
+    word-break: break-word;
+}
+
+.btn-remove-row {
+    background-color: transparent;
+    color: #d9534f;
+    border: 2px solid #ffcccc;
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.btn-remove-row:hover {
+    background-color: #ffe8e8;
+    color: #c41c1c;
+    border-color: #ff6666;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1.1em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-lembrete .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-lembrete .form-group-btn {
+        width: 100%;
+    }
+    
+    .form-lembrete .btn {
+        width: 100%;
+    }
+    
+    .lembrete-row {
+        grid-template-columns: 70px 1fr 45px;
+        gap: 15px;
+        padding: 12px 15px;
+    }
+    
+    .lembrete-hora-badge {
+        font-size: 1.1em;
+        min-width: 60px;
+        padding: 10px;
+    }
+    
+    .lembrete-nome-row {
+        font-size: 0.95em;
+    }
+    
+    .lembretes-header h1 {
+        font-size: 1.8em;
+    }
 }
 
 /* Alertas */
