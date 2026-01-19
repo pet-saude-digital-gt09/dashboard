@@ -399,6 +399,60 @@ body {
     margin-bottom: 40px;
 }
 
+/* ================================
+   ORIENTAÇÕES (PÁGINA) STYLES
+   ================================ */
+.orientacoes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.orientacoes-header .lead { margin: 6px 0 0; color: #555; }
+.perfil-badge small { color: #666; display: block; font-weight: 600; }
+.perfil-badge .badge {
+    display: inline-block;
+    background: linear-gradient(135deg,#e7f3ff,#eef9f1);
+    color: #0056b3;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 dicas por linha em largura de desktop */
+    gap: 18px;
+}
+
+/* Responsividade: 2 colunas em telas médias, 1 coluna em mobile */
+@media (max-width: 1024px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+}
+.dica-card { display:flex; gap:15px; align-items:center; padding:18px; border-radius:12px; transition: transform 0.18s, box-shadow 0.18s; min-height:96px; }
+.dica-card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+.dica-icon {
+    width:64px;
+    height:64px;
+    min-width:64px;
+    min-height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background: linear-gradient(135deg,#e8f5e9,#e3f2fd);
+    font-size:1.6rem;
+    line-height:1;
+    flex-shrink:0;
+}
+.dica-text { margin:0; font-size:1.05em; color:#333; line-height:1.4; }
+.no-dicas { margin:0; color:#666; }
+
+
 .section-title {
     font-size: 1.5em;
     color: #333;
