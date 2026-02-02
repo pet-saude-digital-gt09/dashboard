@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 ''')
 
 # --- Tabela de Médicos ---
-cursor.execute('''
+cursor.execute(''' 
 CREATE TABLE IF NOT EXISTS medicos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     medico TEXT NOT NULL,

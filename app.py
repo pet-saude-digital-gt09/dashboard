@@ -262,7 +262,8 @@ def index():
 def login():
     """Tela de Login (Agora usa o banco de dados)."""
     if request.method == 'POST':
-        cpf = request.form['cpf']
+        cpf_bruto = request.form['cpf']
+        cpf = re.sub(r'[^0-9]', '', cpf_bruto)
         senha = request.form['senha']
         
         # 1. Conecta ao banco e busca o usuário
@@ -298,7 +299,8 @@ def cadastro():
     if request.method == 'POST':
         # 1. Coletar dados do formulário
         nome = request.form['nome']
-        cpf = request.form['cpf']
+        cpf_bruto = request.form['cpf']
+        cpf = re.sub(r'[^0-9]', '', cpf_bruto)
         senha = request.form['senha']
         confirmar_senha = request.form['confirmar_senha']
         # .strip() remove espaços em branco antes e depois
