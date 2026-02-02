@@ -1,32 +1,47 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h2>⏰ Lembretes de Remédios</h2>
-<p>Adicione lembretes para não esquecer seus medicamentos.</p>
+<div class="lembretes-header">
+    <h1>⏰ Lembretes de Remédios</h1>
+    <p class="lead">Gerencie seus horários de medicamentos</p>
+</div>
 
-<div class="card">
-    <h3>Novo Lembrete</h3>
-    <form id="form-lembrete" class="form-inline">
-        <div class="form-group">
-            <label for="remedio-nome">Nome do Remédio</label>
-            <input type="text" id="remedio-nome" class="form-control" required>
+<div class="card card-form">
+    <h3>➕ Novo Lembrete</h3>
+    <form id="form-lembrete" class="form-lembrete">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="remedio-nome">Nome do Remédio</label>
+                <input type="text" id="remedio-nome" class="form-control" placeholder="Ex: Paracetamol" required>
+            </div>
+            <div class="form-group">
+                <label for="remedio-horario">Horário</label>
+                <input type="time" id="remedio-horario" class="form-control" required>
+            </div>
+            <div class="form-group-btn">
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="remedio-horario">Horário (ex: 08:00)</label>
-            <input type="time" id="remedio-horario" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>
 </div>
 
-<div class="card" id="lista-lembretes-container">
-    <h3>Seus Lembretes</h3>
-    <ul id="lista-lembretes">
-        <li>
-            <span>Paracetamol (Exemplo)</span>
-            <span>12:00</span>
-            <button class="btn-danger-sm">Remover</button>
+<div class="card card-lista">
+    <h3>📋 Seus Lembretes</h3>
+    <ul id="lista-lembretes-container" class="lembretes-lista">
+        <li class="lembrete-row">
+            <div class="lembrete-content-row">
+                <span class="lembrete-nome-row">Paracetamol</span>
+            </div>
+            <div class="lembrete-hora-badge">12:00</div>
+            <button class="btn-remove-row">🗑️</button>
         </li>
     </ul>
+    <div class="empty-state" id="empty-state" style="display: none;">
+        <p>Nenhum lembrete adicionado ainda 🤔</p>
+    </div>
 </div>
+
+<script>
+// Placeholder para JavaScript futura funcionalidade
+</script>
 {% endblock %}

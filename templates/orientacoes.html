@@ -1,25 +1,42 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h2>💡 Suas Orientações de Saúde</h2>
 
-<div class="perfil-info">
-    <strong>Seu Perfil de Saúde:</strong>
-    {% if grupos_de_risco and grupos_de_risco[0] != '' %}
-        <span>{{ grupos_de_risco|join(', ') }}</span>
-    {% else %}
-        <span>Saúde Geral</span>
-    {% endif %}
-</div>
-
-<p>Com base no seu perfil, aqui estão algumas dicas importantes:</p>
-
-<div class="card-list">
-    {% for dica in dicas %}
-    <div class="card dica-card">
-        <p><strong>{{ dica }}</strong></p>
+<section class="orientacoes-header card">
+    <div>
+        <h2>💡 Orientações Personalizadas</h2>
+        <p class="lead">Dicas práticas e objetivas para manter sua saúde em dia.</p>
     </div>
-    {% endfor %}
-</div>
+
+    <div class="perfil-badge">
+        <small>Perfil:</small>
+        {% if grupos_de_risco and grupos_de_risco[0] != '' %}
+            <span class="badge">{{ grupos_de_risco|join(', ') }}</span>
+        {% else %}
+            <span class="badge">Saúde Geral</span>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section-block">
+    <h3 class="section-title">Dicas Recomendadas</h3>
+
+    {% if dicas and dicas|length > 0 %}
+    <div class="card-grid">
+        {% for dica in dicas %}
+        <article class="card dica-card">
+            <div class="dica-icon">💚</div>
+            <div class="dica-content">
+                <p class="dica-text">{{ dica }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="card">
+        <p class="no-dicas">Nenhuma orientação disponível no momento. Volte mais tarde.</p>
+    </div>
+    {% endif %}
+</section>
 
 {% endblock %}
