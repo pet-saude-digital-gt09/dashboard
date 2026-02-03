@@ -771,3 +771,258 @@ body {
     .detail-header-large { flex-direction: column; text-align: center; }
     .detail-card-expanded { padding: 20px; }
 }
+
+/* --- Ajuste na Navbar para Mobile --- */
+/* No final do seu arquivo style.css */
+@media (max-width: 768px) {
+    
+    /* 1. DIMENSIONALIDADE DO TOPO (NAVBAR) */
+    .navbar .container {
+        flex-direction: column; /* Empilha saudação e menu */
+    }
+    .navbar-nav {
+        display: flex;
+        overflow-x: auto; /* Barra deslizante horizontal */
+        width: 100%;
+        white-space: nowrap;
+        padding: 10px 0;
+        gap: 15px;
+    }
+
+    /* 2. REDUÇÃO DE FONTES (Para não ocupar a tela toda) */
+    .user-brand, .navbar-brand {
+        font-size: 1.1rem !important; /* Nome do usuário menor */
+    }
+    .lembretes-header h1, .detail-title-group h2 {
+        font-size: 1.6rem !important; /* Títulos de página menos "gritantes" */
+    }
+    .nav-link {
+        font-size: 0.85rem !important; /* Links do menu menores */
+    }
+    .form-group label {
+        font-size: 0.85rem !important; /* Rótulos do formulário menores */
+    }
+
+    /* 3. PROTEÇÃO DE TABELAS E CARDS */
+    .table-container-mobile {
+        width: 100%;
+        overflow-x: auto; /* Resolve o corte do cronograma */
+    }
+    .card {
+        width: 100% !important; /* Card ocupa a largura total */
+        padding: 15px !important; /* Menos espaço interno no mobile */
+    }
+
+    /* 4. FLIP CARDS (Dashboard) */
+    .flip-container {
+        flex-direction: column; /* Empilha os cards de saúde */
+        align-items: center;
+    }
+    .flip-card {
+        width: 90%; /* Card de saúde maior para leitura fácil no celular */
+        height: 280px;
+    }
+    /* Ajusta os botões de seleção de especialidade */
+    .btn-outline-primary {
+        font-size: 0.95rem !important;
+        border-radius: 12px;
+    }
+
+    /* Ajusta a tabela simplificada */
+    .table td, .table th {
+        font-size: 0.85rem !important; /* Letras menores conforme solicitado */
+        padding: 12px 8px !important;
+    }
+}
+/* --- Estilização da Tela de Seleção --- */
+.especialidade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card-especialidade {
+    background: #ffffff;
+    border: 1px solid #eef2f6;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-especialidade:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 86, 179, 0.1);
+    border-color: #0056b3;
+    color: #0056b3;
+}
+
+.especialidade-icon {
+    font-size: 2rem;
+    background: #f0f7ff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+/* --- Estilização da Tabela de Horários --- */
+/* Container que agrupa o banner e a tabela para que andem juntos */
+.cronograma-wrapper {
+    width: 95%;          /* Margem de segurança nas laterais */
+    max-width: 1000px;   /* Largura máxima idêntica para ambos */
+    margin: 10px auto;   /* Centraliza o bloco todo na tela */
+    border-radius: 8px;
+    overflow: hidden;    /* Garante que o fundo azul não escape das quinas arredondadas */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+/* O banner azul agora faz parte do topo do wrapper */
+.header-detalhes-slim {
+    background: #0056b3;
+    color: white;
+    padding: 6px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Ajuste dos textos dentro do banner */
+.header-detalhes-slim h2 {
+    font-size: 1.05rem !important; /* Tamanho de título menor */
+    margin: 0 !important;
+    font-weight: 500;
+}
+
+.header-detalhes small {
+    display: none; /* Removemos o rótulo "Especialidade" para ganhar espaço */
+}
+
+/* Botão voltar mais compacto */
+.btn-voltar-minimal {
+    font-size: 0.85rem !important;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.9) !important; /* Fonte clara */
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-voltar-minimal:hover {
+    background: rgba(255, 255, 255, 0.15); /* Efeito suave ao passar o mouse */
+    color: #0056b3 !important;
+}
+
+/* A tabela logo abaixo do banner */
+.cronograma-container {
+    background: white;
+    width: 100%;         /* Ocupa 100% do cronograma-wrapper */
+    border: none;
+}
+
+.table-cronograma {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Distribui as colunas de forma equilibrada */
+}
+
+/* Ajuste responsivo para garantir que nada "vaze" no mobile */
+@media (max-width: 768px) {
+    .cronograma-wrapper {
+        width: 100%;     /* No celular, usa a largura total disponível */
+        margin: 10px 0;
+        border-radius: 0; /* Remove arredondamento para ganhar espaço lateral */
+    }
+}
+
+.table-cronograma {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-cronograma th {
+    background-color: #f8f9fa;
+    color: #666;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.table-cronograma td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+}
+
+/* Redução de fonte mobile dentro do seu @media já existente  */
+@media (max-width: 768px) {
+    .especialidade-grid { grid-template-columns: 1fr 1fr; }
+    .table-cronograma td { font-size: 0.8rem; padding: 12px 10px; }
+    .card-especialidade { padding: 15px; }
+}
+
+/* 1. Ajuste do Container Principal */
+.cronograma-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 100%; /* Garante que o container use toda a largura disponível */
+    max-width: 1000px; /* Evita que no PC fique largo demais */
+    margin: 0 auto; /* Centraliza o container na tela do site */
+}
+
+/* 2. Ajuste da Tabela para preencher o espaço */
+.table-cronograma {
+    width: 100%; /* Força a tabela a esticar até as bordas do container */
+    border-collapse: collapse;
+    table-layout: fixed; /* Ajuda a distribuir as colunas igualmente */
+}
+
+.table-cronograma th, 
+.table-cronograma td {
+    padding: 15px;
+    text-align: left; /* Garante alinhamento à esquerda consistente */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* 3. Ajuste do Cabeçalho Azul */
+.header-detalhes {
+    background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 0 auto; /* Centraliza igual à tabela */
+}
+
+/* 4. Melhoria no botão 'Voltar' que estava roxo/desalinhado */
+.header-detalhes a.btn-voltar {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.header-detalhes a.btn-voltar:hover {
+    background: white;
+    color: #0056b3 !important;
+}

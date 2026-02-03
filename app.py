@@ -441,14 +441,24 @@ def orientacoes():
 @app.route('/cronograma')
 @login_required
 def cronograma():
-    """Tela de Cronograma (Agora usa o banco de dados)."""
     conn = get_db_connection()
-    # Busca todos os médicos no banco
-    medicos_db = conn.execute('SELECT * FROM medicos ORDER BY dia, horario').fetchall()
-    conn.close()
+    especialidade_selecionada = request.args.get('especialidade')
+
+    if especialidade_selecionada:
+        # Busca apenas os médicos da especialidade escolhida
+        medicos = conn.execute(
+            'SELECT * FROM medicos WHERE especialidade = ? ORDER BY dia, horario',
+            (especialidade_selecionada,)
+        ).fetchall()
+        conn.close()
+        return render_template('cronograma_detalhes.html', 
+                               medicos=medicos, 
+                               especialidade=especialidade_selecionada)
     
-    # Envia os dados do banco para o template
-    return render_template('cronograma.html', medicos=medicos_db)
+    # Busca todas as especialidades únicas para mostrar no menu inicial
+    especialidades = conn.execute('SELECT DISTINCT especialidade FROM medicos').fetchall()
+    conn.close()
+    return render_template('cronograma.html', especialidades=especialidades)
 
 @app.route('/lembretes')
 @login_required

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="cronograma-wrapper">
+    <div class="header-detalhes-slim">
+        <h2>{{ especialidade }}</h2>
+        <a href="{{ url_for('cronograma') }}" class="btn-voltar-minimal">
+            &larr; Voltar
+        </a>
+    </div>
+
+    <div class="cronograma-container">
+        <div class="table-responsive">
+            <table class="table-cronograma" style="width: 100%;">
+                <thead style="background-color: #f9f9f9; border-bottom: 1px solid #eee;">
+                    <tr>
+                        <th style="padding: 8px 15px; font-size: 0.65rem; color: #888; text-transform: uppercase;">Médico(a)</th>
+                        <th style="padding: 8px 15px; font-size: 0.65rem; color: #888; text-transform: uppercase;">Dia</th>
+                        <th style="padding: 8px 15px; font-size: 0.65rem; color: #888; text-transform: uppercase;">Horário</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medico in medicos %}
+                    <tr style="border-bottom: 1px solid #f1f1f1;">
+                        <td style="padding: 10px 15px; font-size: 0.85rem;">{{ medico.medico }}</td>
+                        <td style="padding: 10px 15px; font-size: 0.8rem; color: #666;">{{ medico.dia }}</td>
+                        <td style="padding: 10px 15px; font-size: 0.8rem; font-weight: 600; color: #0056b3;">{{ medico.horario }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
