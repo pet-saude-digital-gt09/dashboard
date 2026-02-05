@@ -445,11 +445,20 @@ def cronograma():
     especialidade_selecionada = request.args.get('especialidade')
 
     if especialidade_selecionada:
-        # Busca apenas os médicos da especialidade escolhida
-        medicos = conn.execute(
-            'SELECT * FROM medicos WHERE especialidade = ? ORDER BY dia, horario',
-            (especialidade_selecionada,)
-        ).fetchall()
+        # Consulta com ordenação lógica dos dias da semana
+        medicos = conn.execute('''
+            SELECT * FROM medicos 
+            WHERE especialidade = ? 
+            ORDER BY CASE dia
+                WHEN 'Segunda-feira' THEN 1
+                WHEN 'Terça-feira' THEN 2
+                WHEN 'Quarta-feira' THEN 3
+                WHEN 'Quinta-feira' THEN 4
+                WHEN 'Sexta-feira' THEN 5
+                ELSE 6
+            END, horario ASC
+        ''', (especialidade_selecionada,)).fetchall()
+        
         conn.close()
         return render_template('cronograma_detalhes.html', 
                                medicos=medicos, 
