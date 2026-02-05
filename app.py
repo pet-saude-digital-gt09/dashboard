@@ -539,5 +539,31 @@ def api_delete_lembrete():
     
     return jsonify({'message': 'Lembrete deletado com sucesso'}), 200
 
+@app.route('/contato', methods=['GET', 'POST'])
+def contato():
+    """Página de Contato para feedback dos usuários."""
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        mensagem = request.form.get('mensagem')
+
+        if not nome or not email or not mensagem:
+            flash('Por favor, preencha todos os campos.', 'warning')
+        else:
+            try:
+                conn = get_db_connection()
+                conn.execute(
+                    'INSERT INTO contatos (nome, email, mensagem) VALUES (?, ?, ?)',
+                    (nome, email, mensagem)
+                )
+                conn.commit()
+                conn.close()
+                flash('Sua mensagem foi enviada com sucesso! Obrigado pelo feedback.', 'success')
+                return redirect(url_for('home') if 'cpf_logado' in session else url_for('index'))
+            except Exception as e:
+                flash(f'Erro ao enviar mensagem: {e}', 'danger')
+
+    return render_template('contato.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

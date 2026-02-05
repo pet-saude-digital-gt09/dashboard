@@ -10,6 +10,7 @@ print("Limpando dados antigos e recriando tabelas...")
 cursor.execute('DROP TABLE IF EXISTS medicos')
 cursor.execute('DROP TABLE IF EXISTS usuarios')
 cursor.execute('DROP TABLE IF EXISTS lembretes')
+cursor.execute('DROP TABLE IF EXISTS contatos') # Nova tabela
 
 # --- Tabela de Usuários ---
 cursor.execute('''
@@ -42,6 +43,17 @@ CREATE TABLE lembretes (
     nome_remedio TEXT NOT NULL,
     horario TEXT NOT NULL,
     FOREIGN KEY (cpf_usuario) REFERENCES usuarios (cpf)
+)
+''')
+
+# --- Nova Tabela de Contatos (Feedback) ---
+cursor.execute('''
+CREATE TABLE contatos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    email TEXT NOT NULL,
+    mensagem TEXT NOT NULL,
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 ''')
 

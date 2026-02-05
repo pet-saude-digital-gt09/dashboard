@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="login-container"> <div class="card">
+        <h2 class="section-title">Fale Conosco</h2>
+        <p>Use o formulário abaixo para enviar sugestões, elogios ou relatar problemas relacionados à USF Tito Silva.</p>
+        
+        <form method="POST" action="{{ url_for('contato') }}">
+            <div class="form-group">
+                <label for="nome">Seu Nome</label>
+                <input type="text" name="nome" id="nome" class="form-control" 
+                       value="{{ session.nome_usuario if session.nome_usuario else '' }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail para Retorno</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea name="mensagem" id="mensagem" class="form-control" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Feedback</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
