@@ -1,29 +1,16 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-<h2>🗓️ Cronograma de Médicos</h2>
-<p>Veja a disponibilidade dos profissionais na unidade de saúde.</p>
+<div class="dashboard-header">
+    <h2 class="section-title">Nossos Especialistas</h2>
+    <p class="text-muted">Selecione uma especialidade para consultar os horários.</p>
+</div>
 
-<div class="card">
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>Médico(a)</th>
-                <th>Especialidade</th>
-                <th>Dia</th>
-                <th>Horário</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for medico in medicos %}
-            <tr>
-                <td>{{ medico.medico }}</td>
-                <td>{{ medico.especialidade }}</td>
-                <td>{{ medico.dia }}</td>
-                <td>{{ medico.horario }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="especialidade-grid">
+    {% for item in especialidades %}
+    <a href="{{ url_for('cronograma', especialidade=item['especialidade']) }}" class="card-especialidade">
+        <div class="especialidade-icon">🩺</div>
+        <span class="fw-bold">{{ item['especialidade'] }}</span>
+    </a>
+    {% endfor %}
 </div>
 {% endblock %}

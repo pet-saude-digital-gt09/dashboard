@@ -262,7 +262,8 @@ def index():
 def login():
     """Tela de Login (Agora usa o banco de dados)."""
     if request.method == 'POST':
-        cpf = request.form['cpf']
+        cpf_bruto = request.form['cpf']
+        cpf = re.sub(r'[^0-9]', '', cpf_bruto)
         senha = request.form['senha']
         
         # 1. Conecta ao banco e busca o usuário
@@ -298,7 +299,8 @@ def cadastro():
     if request.method == 'POST':
         # 1. Coletar dados do formulário
         nome = request.form['nome']
-        cpf = request.form['cpf']
+        cpf_bruto = request.form['cpf']
+        cpf = re.sub(r'[^0-9]', '', cpf_bruto)
         senha = request.form['senha']
         confirmar_senha = request.form['confirmar_senha']
         # .strip() remove espaços em branco antes e depois
@@ -439,14 +441,33 @@ def orientacoes():
 @app.route('/cronograma')
 @login_required
 def cronograma():
-    """Tela de Cronograma (Agora usa o banco de dados)."""
     conn = get_db_connection()
-    # Busca todos os médicos no banco
-    medicos_db = conn.execute('SELECT * FROM medicos ORDER BY dia, horario').fetchall()
-    conn.close()
+    especialidade_selecionada = request.args.get('especialidade')
+
+    if especialidade_selecionada:
+        # Consulta com ordenação lógica dos dias da semana
+        medicos = conn.execute('''
+            SELECT * FROM medicos 
+            WHERE especialidade = ? 
+            ORDER BY CASE dia
+                WHEN 'Segunda-feira' THEN 1
+                WHEN 'Terça-feira' THEN 2
+                WHEN 'Quarta-feira' THEN 3
+                WHEN 'Quinta-feira' THEN 4
+                WHEN 'Sexta-feira' THEN 5
+                ELSE 6
+            END, horario ASC
+        ''', (especialidade_selecionada,)).fetchall()
+        
+        conn.close()
+        return render_template('cronograma_detalhes.html', 
+                               medicos=medicos, 
+                               especialidade=especialidade_selecionada)
     
-    # Envia os dados do banco para o template
-    return render_template('cronograma.html', medicos=medicos_db)
+    # Busca todas as especialidades únicas para mostrar no menu inicial
+    especialidades = conn.execute('SELECT DISTINCT especialidade FROM medicos').fetchall()
+    conn.close()
+    return render_template('cronograma.html', especialidades=especialidades)
 
 @app.route('/lembretes')
 @login_required
@@ -517,6 +538,32 @@ def api_delete_lembrete():
     conn.close()
     
     return jsonify({'message': 'Lembrete deletado com sucesso'}), 200
+
+@app.route('/contato', methods=['GET', 'POST'])
+def contato():
+    """Página de Contato para feedback dos usuários."""
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        mensagem = request.form.get('mensagem')
+
+        if not nome or not email or not mensagem:
+            flash('Por favor, preencha todos os campos.', 'warning')
+        else:
+            try:
+                conn = get_db_connection()
+                conn.execute(
+                    'INSERT INTO contatos (nome, email, mensagem) VALUES (?, ?, ?)',
+                    (nome, email, mensagem)
+                )
+                conn.commit()
+                conn.close()
+                flash('Sua mensagem foi enviada com sucesso! Obrigado pelo feedback.', 'success')
+                return redirect(url_for('home') if 'cpf_logado' in session else url_for('index'))
+            except Exception as e:
+                flash(f'Erro ao enviar mensagem: {e}', 'danger')
+
+    return render_template('contato.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

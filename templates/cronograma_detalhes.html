@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="cronograma-wrapper">
+    <div class="header-detalhes-slim">
+        <h2>{{ especialidade }}</h2>
+        <a href="{{ url_for('cronograma') }}" class="btn-voltar-minimal">
+            &larr; Voltar
+        </a>
+    </div>
+
+    <div style="padding: 10px 15px; background-color: #fcfcfc; border-bottom: 1px solid #eee;">
+        <p style="margin: 0; font-size: 0.75rem; color: #d9534f; font-weight: 600;">
+            ⚠ Chegada: Manhã (07h) | Tarde (12h) 
+        </p>
+        <p style="margin: 3px 0 0; font-size: 0.7rem; color: #666;">
+            Obrigatório: Cartão do SUS e CPF 
+        </p>
+    </div>
+
+    <div class="cronograma-container">
+        <div class="table-responsive">
+            <table class="table-cronograma" style="width: 100%;">
+                <thead style="background-color: #f9f9f9; border-bottom: 1px solid #eee;">
+                    <tr>
+                        <th style="padding: 8px 15px; font-size: 0.65rem; color: #888; text-transform: uppercase;">Serviço</th>
+                        <th style="padding: 8px 15px; font-size: 0.65rem; color: #888; text-transform: uppercase;">Dia</th>
+                        <th style="padding: 8px 15px; font-size: 0.65rem; color: #888; text-transform: uppercase;">Turno</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medico in medicos %}
+                    <tr style="border-bottom: 1px solid #f1f1f1;">
+                        <td style="padding: 12px 15px; font-size: 0.85rem; font-weight: 500;">{{ medico.medico }}</td>
+                        <td style="padding: 12px 15px; font-size: 0.8rem; color: #666;">{{ medico.dia }}</td>
+                        <td style="padding: 12px 15px; font-size: 0.75rem; font-weight: 600; color: #0056b3;">{{ medico.horario }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="padding: 8px 15px; background-color: #fff; border-top: 1px solid #f1f1f1;">
+        <p style="margin: 0; font-size: 0.6rem; color: #999; line-height: 1.2; text-align: center;">
+            Atendimento Prioritário: Lei nº 14.364/22 (Idosos, PCD, Gestantes e Obesos) [cite: 14, 22]
+        </p>
+    </div>
+</div>
+
+{% endblock %}
