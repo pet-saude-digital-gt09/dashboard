@@ -27,8 +27,12 @@
         <div class="vacinal-secao">
             <h4>Endereço</h4>
             <p class="vacinal-endereco">
+                {% if usuario.rua %}
                 {{ usuario.rua }}, {{ usuario.numero }},<br>
                 {{ usuario.bairro }} - {{ usuario.estado }}
+                {% else %}
+                Não informado
+                {% endif %}
             </p>
         </div>
     </div>
