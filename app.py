@@ -319,12 +319,14 @@ CALENDARIO_VACINAL = {
             {'nome': 'Poliomielite (VIP/VOP)', 'doses': ['1ª Dose', '2ª Dose', '3ª Dose', 'Reforço 1', 'Reforço 2']},
             {'nome': 'Pneumocócica 10V', 'doses': ['1ª Dose', '2ª Dose', 'Reforço']},
             {'nome': 'Rotavírus', 'doses': ['1ª Dose', '2ª Dose']},
-            {'nome': 'Meningocócica ACWY', 'doses': ['1ª Dose', '2ª Dose', 'Reforço']},
-            {'nome': 'Febre Amarela', 'doses': ['Dose Única']},
-            {'nome': 'Tríplice Viral (SCR)', 'doses': ['1ª Dose', '2ª Dose']},
-            {'nome': 'Varicela', 'doses': ['Dose Única']},
+            {'nome': 'Meningocócica C', 'doses': ['1ª Dose', '2ª Dose', 'Reforço']},
+            {'nome': 'Febre Amarela', 'doses': ['Dose', 'Reforço']},  # 9 meses e reforço aos 4 anos
+            {'nome': 'Tríplice Viral (SCR)', 'doses': ['1ª Dose']},  # a 2ª dose vem na Tetraviral
+            {'nome': 'Tetraviral (SCRV)', 'doses': ['Dose Única']},  # 15 meses
+            {'nome': 'Varicela', 'doses': ['2ª Dose']},  # aos 4 anos; a 1ª dose vem na Tetraviral
             {'nome': 'DTP (Reforço)', 'doses': ['Reforço 1', 'Reforço 2']},
             {'nome': 'Hepatite A', 'doses': ['Dose Única']},
+            {'nome': 'Influenza (Gripe)', 'doses': ['Dose Anual']},
         ]
     },
     'adolescente': {
@@ -353,7 +355,8 @@ CALENDARIO_VACINAL = {
         'vacinas': [
             {'nome': 'Influenza (Gripe)', 'doses': ['Dose Anual']},
             {'nome': 'Pneumocócica 23V', 'doses': ['Dose Única']},
-            {'nome': 'Dupla Adulto (dT)', 'doses': ['Reforço']},
+            {'nome': 'Hepatite B', 'doses': ['1ª Dose', '2ª Dose', '3ª Dose']},
+            {'nome': 'Dupla Adulto (dT)', 'doses': ['1ª Dose', '2ª Dose', '3ª Dose', 'Reforço']},
             {'nome': 'Covid-19', 'doses': ['Dose Anual']},
             {'nome': 'Herpes Zóster', 'doses': ['1ª Dose', '2ª Dose']},
         ]
@@ -680,8 +683,10 @@ def cartao_vacinal():
 
     conn = get_db_connection()
     usuario = conn.execute('SELECT * FROM usuarios WHERE cpf = ?', (cpf,)).fetchone()
+    # Ordenado por data para que, em doses repetidas (ex.: Dose Anual), a mais recente prevaleça
     aplicadas_db = conn.execute(
-        'SELECT vacina, dose, data_aplicacao FROM vacinas_aplicadas WHERE cpf_usuario = ?', (cpf,)
+        'SELECT vacina, dose, data_aplicacao FROM vacinas_aplicadas WHERE cpf_usuario = ? ORDER BY data_aplicacao',
+        (cpf,)
     ).fetchall()
     conn.close()
 
@@ -694,7 +699,12 @@ def cartao_vacinal():
     calendario = {'titulo': calendario_base['titulo'], 'vacinas': vacinas_visiveis}
     aplicadas = {f"{a['vacina']}|{a['dose']}": a['data_aplicacao'] for a in aplicadas_db}
 
+    # Vacinas registradas que não aparecem no calendário da faixa etária atual (ex.: as da infância de um adulto)
+    doses_do_calendario = {f"{v['nome']}|{dose}" for v in vacinas_visiveis for dose in v['doses']}
+    outras_vacinas = [dict(a) for a in aplicadas_db if f"{a['vacina']}|{a['dose']}" not in doses_do_calendario]
+
     return render_template('cartao_vacinal.html', usuario=usuario, calendario=calendario, aplicadas=aplicadas,
+                           outras_vacinas=outras_vacinas,
                            idade_anos=idade_anos, idade_meses=idade_meses, idade_dias=idade_dias)
 
 @app.route('/lembretes', methods=['GET', 'POST'])

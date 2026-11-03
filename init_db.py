@@ -12,6 +12,10 @@ cursor.execute('DROP TABLE IF EXISTS usuarios')
 cursor.execute('DROP TABLE IF EXISTS lembretes')
 cursor.execute('DROP TABLE IF EXISTS contatos') # Nova tabela
 cursor.execute('DROP TABLE IF EXISTS vacinas_aplicadas')
+# Controle do importar_esus.py (ele recria essas tabelas quando precisar); apagadas junto com os usuários
+# para que os arquivos do e-SUS voltem a ser importados
+cursor.execute('DROP TABLE IF EXISTS esus_fichas_processadas')
+cursor.execute('DROP TABLE IF EXISTS historico_alteracoes')
 
 # --- Tabela de Usuários ---
 cursor.execute('''

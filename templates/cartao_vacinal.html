@@ -61,6 +61,29 @@
             </div>
         </div>
         {% endfor %}
+
+        {% if outras_vacinas %}
+        <div class="vacinal-conteudo-header">
+            <span>📋 Outras vacinas registradas</span>
+        </div>
+
+        {% for vacina, registros in outras_vacinas | groupby('vacina') %}
+        <div class="vacina-row">
+            <div class="vacina-nome">{{ vacina | upper }}</div>
+            <div class="vacina-doses">
+                {% for registro in registros %}
+                <div class="dose-box dose-aplicada">
+                    <span class="dose-label">{{ registro.dose | upper }}</span>
+                    <span class="dose-info">
+                        1 aplicação<br>
+                        <span class="dose-data">💉 {{ registro.data_aplicacao | data_br }}</span>
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
     </div>
 </div>
 
